@@ -1,1 +1,1 @@
-web: gunicorn --bind 0.0.0.0:$80 app:application
+web: gunicorn --bind 0.0.0.0 app:application
