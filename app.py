@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 
 application = Flask(__name__, template_folder='templates')
@@ -31,6 +31,8 @@ def pets_market_delete():
 
 @application.route("/pets-market/add/", methods=['GET', 'POST'])
 def pets_market_add():
+  if request.method == 'POST':
+    return 'POST method'
   content = render_template('add_pets.html')
   return content 
 
