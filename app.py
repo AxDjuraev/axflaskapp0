@@ -13,15 +13,25 @@ class Pet(database.Model):
 
   def __repr__(self):
     return '<Pet %r>' % self.id
-    
+
 @application.route("/")
 def main():
   content = render_template('index.html')
   return content 
 
-@application.route("/home")
+@application.route("/pets-market/")
 def home():
-  content = render_template('home.html')
+  content = render_template('pets_market.html')
+  return content 
+
+@application.route("/pets-market/delete/")
+def home():
+  content = render_template('delete_pets.html')
+  return content 
+
+@application.route("/pets-market/add/")
+def home():
+  content = render_template('add_pets.html')
   return content 
 
 if __name__ == '__main__':
