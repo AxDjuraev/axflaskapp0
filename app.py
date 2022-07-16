@@ -30,6 +30,7 @@ def pets_market_delete(id):
   try:
     deleting_pet = Pet.query.get_or_404(id)
     database.session.delete(deleting_pet)
+    database.session.commit()
     return redirect("/pets-market/")
   except Exception as exception:
     return f'Error: {str(exception)}'
