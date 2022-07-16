@@ -51,5 +51,15 @@ def pets_market_add():
   content = render_template('add_pets.html')
   return content 
 
+@application.route('/pets-market/modify/<int:id>', methods=['GET', 'POST'])
+def pets_market_modify():
+  try:
+    deleting_pet = Pet.query.get_or_404(id)
+    database.session.delete(deleting_pet)
+    database.session.commit()
+    return redirect("/pets-market/")
+  except Exception as exception:
+    return f'Error: {str(exception)}
+
 if __name__ == '__main__':
   application.run(debug=True)
