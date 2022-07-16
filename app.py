@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 
 application = Flask(__name__, template_folder='templates')
@@ -21,7 +21,8 @@ def main():
 
 @application.route("/pets-market/")
 def pets_market():
-  content = render_template('pets_market.html')
+  pets = Pet.query.order_by(Pet.name).all()
+  content = render_template('pets_market.html', pets = pets)
   return content 
 
 @application.route("/pets-market/delete/", methods=['GET', 'POST'])
@@ -32,7 +33,16 @@ def pets_market_delete():
 @application.route("/pets-market/add/", methods=['GET', 'POST'])
 def pets_market_add():
   if request.method == 'POST':
-    return 'POST method'
+    try:
+      pet_name = request.form['pet_name']
+      pet_age = request.form['pet_age']
+      pet = Pet(name = pet_name, age = pet_age)
+      
+      database.session.add(pet)
+      database.session.commit()
+      return redirect('/pets-market/')
+    except Exception as exception:
+      return f'Error: {str(exception)}'
   content = render_template('add_pets.html')
   return content 
 
