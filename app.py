@@ -62,7 +62,7 @@ def pets_market_modify(id):
       return redirect('/pets-market/')
     return render_template('modify.html', pet=modify_pet)
   except Exception as exception:
-    return f'Error: {str(exception)}
+    return f'Error: {str(exception)}'
 
 if __name__ == '__main__':
   application.run(debug=True)
