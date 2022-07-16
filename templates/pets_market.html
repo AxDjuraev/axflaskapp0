@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Pets Market</title>
+{% endblock %}
+
+{% block body %}
+  <div id="content">
+    <hr/>
+    <h2 align="center"> Buy for yourself pets.</h2>
+    <hr/>
+    <table align="center" id="pets_table">
+      <tr>
+        <td>Name</td>
+        <td>Age</td>
+        <td>Actions</td> 
+      </tr>
+      <tr>
+        <td>First Pet</td>
+        <td>3</td>
+        <td>
+          <a href="">Delete</a>
+          <a href="">Modify</a>
+        </td> 
+      </tr>
+    </table>
+  </div>
+
+{% endblock %}
