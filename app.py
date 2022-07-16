@@ -56,8 +56,8 @@ def pets_market_modify(id):
   try:
     modify_pet = Pet.query.get_or_404(id)
     if request.method == "POST":
-      modify_pet.name = request.form('pet_name')
-      modify_pet.age = request.form('pet_age')
+      modify_pet.name = request.form['pet_name']
+      modify_pet.age = request.form['pet_age']
       database.session.commit()
       return redirect('/pets-market/')
     return render_template('modify.html', pet=modify_pet)
