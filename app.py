@@ -10,7 +10,10 @@ class Pet(database.Model):
   id = database.Column(database.Integer, primary_key = True)
   name = database.Column(database.String(200), nullable = False)
   age = database.Column(database.Integer, nullable = False)
-  
+
+  def __repr__(self):
+    return '<Pet %r>' % self.id
+    
 @application.route("/")
 def main():
   content = render_template('index.html')
