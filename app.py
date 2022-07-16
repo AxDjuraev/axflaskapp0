@@ -25,10 +25,14 @@ def pets_market():
   content = render_template('pets_market.html', pets = pets)
   return content 
 
-@application.route("/pets-market/delete/", methods=['GET', 'POST'])
-def pets_market_delete():
-  content = render_template('delete_pets.html')
-  return content 
+@application.route("/pets-market/delete/<int:id>", methods=['GET', 'POST'])
+def pets_market_delete(id):
+  try:
+    deleting_pet = Pet.query.get_or_404(id)
+    database.session.delete(deleting_pet)
+    return redirect("/pets-market/")
+  except Exception as exception:
+    return f'Error: {str(exception)}'
 
 @application.route("/pets-market/add/", methods=['GET', 'POST'])
 def pets_market_add():
