@@ -20,17 +20,17 @@ def main():
   return content 
 
 @application.route("/pets-market/")
-def home():
+def pets_market():
   content = render_template('pets_market.html')
   return content 
 
 @application.route("/pets-market/delete/")
-def home():
+def pets_market_delete():
   content = render_template('delete_pets.html')
   return content 
 
 @application.route("/pets-market/add/")
-def home():
+def pets_market_add():
   content = render_template('add_pets.html')
   return content 
 
