@@ -24,12 +24,12 @@ def pets_market():
   content = render_template('pets_market.html')
   return content 
 
-@application.route("/pets-market/delete/")
+@application.route("/pets-market/delete/", methods=['GET', 'POST'])
 def pets_market_delete():
   content = render_template('delete_pets.html')
   return content 
 
-@application.route("/pets-market/add/")
+@application.route("/pets-market/add/", methods=['GET', 'POST'])
 def pets_market_add():
   content = render_template('add_pets.html')
   return content 
