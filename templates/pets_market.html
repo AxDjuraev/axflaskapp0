@@ -15,14 +15,16 @@
         <td>Age</td>
         <td>Actions</td> 
       </tr>
-      <tr>
-        <td>First Pet</td>
-        <td>3</td>
-        <td>
-          <a href="">Delete</a>
-          <a href="">Modify</a>
-        </td> 
-      </tr>
+      {% for pet in pets %}
+        <tr>
+          <td>{{ pet.name }}</td>
+          <td>{{ pet.age }}</td>
+          <td>
+            <a href="">Delete</a>
+            <a href="">Modify</a>
+          </td> 
+        </tr>
+      {% endfor %}
     </table>
   </div>
 
