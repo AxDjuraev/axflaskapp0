@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Add new pets</title>
+{% endblock %}
+
+{% block body %}
+  <div align="center" id="content">
+    <form action="/pets-market/add/", method="POST">
+      <input type="text" name="pet_name" id="pet_name"/>
+      <br>
+      <input type="number" name="pet_age" id="pet_age"/>
+      <br>
+      <input type="submit" value="submit"/>
+    </form>
+  </div>
+{% endblock %}
