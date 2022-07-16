@@ -6,6 +6,11 @@ application = Flask(__name__, template_folder='templates')
 application.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 database = SQLAlchemy(application)
 
+class Pet(database.Model):
+  id = database.Column(database.Integer, primary_key = True)
+  name = database.Column(database.String(200), nullable = False)
+  age = database.Column(database.Integer, nullable = False)
+  
 @application.route("/")
 def main():
   content = render_template('index.html')
