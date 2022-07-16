@@ -9,24 +9,28 @@
     <hr/>
     <h2 align="center"> Buy for yourself pets.</h2>
     <hr/>
-    <table border="2px" margin="2px" align="center" id="pets_table">
-      <tr>
-        <td>Name</td>
-        <td>Age</td>
-        <td>Actions</td> 
-      </tr>
-      {% for pet in pets %}
+    {% if pets|length < 1 %}
+      <h2> There is no pets.</h2>
+    {% else %}  
+      <table border="2px" margin="2px" align="center" id="pets_table">
         <tr>
-          <td>{{ pet.name }}</td>
-          <td>{{ pet.age }}</td>
-          <td>
-            <a href="/pets-market/delete/{{ pet.id }}">Delete</a>
-            <br>
-            <a href="/pets-market/modify/{{ pet.id }}">Modify</a>
-          </td> 
+          <td>Name</td>
+          <td>Age</td>
+          <td>Actions</td> 
         </tr>
-      {% endfor %}
-    </table>
+        {% for pet in pets %}
+          <tr>
+            <td>{{ pet.name }}</td>
+            <td>{{ pet.age }}</td>
+            <td>
+              <a href="/pets-market/delete/{{ pet.id }}">Delete</a>
+              <br>
+              <a href="/pets-market/modify/{{ pet.id }}">Modify</a>
+            </td> 
+          </tr>
+        {% endfor %}
+      </table>
+    {% endif %}
   </div>
 
 {% endblock %}
