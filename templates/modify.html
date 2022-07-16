@@ -7,7 +7,7 @@
 {% block body %}
   <div align="center" id="content">
     <h1>Add new Pets</h1>
-    <form action="/pets-market/add/", method="POST">
+    <form action="/pets-market/modify/{{ pet.id }}", method="POST">
       <label for="petname">Pet name</label>
       <input type="text" name="pet_name" id="pet_name" value="{{ pet.name }}"/>
       <br>
