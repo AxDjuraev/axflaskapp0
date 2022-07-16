@@ -4,6 +4,8 @@ from flask_sqlalchemy import SQLAlchemy
 
 application = Flask(__name__, template_folder='templates')
 application.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+database = SQLAlchemy(application)
+
 @application.route("/")
 def main():
   content = render_template('index.html')
