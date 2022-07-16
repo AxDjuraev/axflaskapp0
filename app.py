@@ -52,12 +52,15 @@ def pets_market_add():
   return content 
 
 @application.route('/pets-market/modify/<int:id>', methods=['GET', 'POST'])
-def pets_market_modify():
+def pets_market_modify(id):
   try:
-    deleting_pet = Pet.query.get_or_404(id)
-    database.session.delete(deleting_pet)
-    database.session.commit()
-    return redirect("/pets-market/")
+    modify_pet = Pet.query.get_or_404(id)
+    if request.method == "POST":
+      modify_pet.name = request.form('pet_name')
+      modify_pet.age = request.form('pet_age')
+      database.session.commit()
+      return redirect('/pets-market/')
+    return render_template('modify.html', pet=modify_pet)
   except Exception as exception:
     return f'Error: {str(exception)}
 
